@@ -38,6 +38,8 @@ export const apiSlice = createApi({
     "AllFilters",
     "getFilter",
     "Product",   // ← ensure Product is declared here
+    "SuitableFor",
+    "SubSuitableFor",
   ],
   endpoints: () => ({}),
 });

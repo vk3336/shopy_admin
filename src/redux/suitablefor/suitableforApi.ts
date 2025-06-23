@@ -1,10 +1,9 @@
 // src/redux/suitablefor/suitableforApi.ts
 import { apiSlice } from "../api/apiSlice";
-import { ISuitableFor } from "@/types/suitableFor-type";
+import { ISuitableFor } from "@/types/suitable-for-type";
 
 export const suitableForApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["SuitableFor"],
   endpoints: (builder) => ({
     getAllSuitableFor: builder.query<{ data: ISuitableFor[] }, void>({
       query: () => "/api/suitablefor/view/",
@@ -17,7 +16,6 @@ export const suitableForApi = apiSlice.injectEndpoints({
           : [{ type: "SuitableFor", id: "LIST" }],
     }),
     getSuitableFor: builder.query<{ data: ISuitableFor }, string>({
-      // Include the id in the URL:
       query: (id) => `/api/suitablefor/view/${id}`,
       providesTags: (res, err, id) => [{ type: "SuitableFor", id }],
       keepUnusedDataFor: 300,
@@ -52,7 +50,7 @@ export const suitableForApi = apiSlice.injectEndpoints({
 
 export const {
   useGetAllSuitableForQuery,
-  useGetSuitableForQuery,   // now correctly calls /api/suitablefor/view/:id
+  useGetSuitableForQuery,
   useAddSuitableForMutation,
   useUpdateSuitableForMutation,
   useDeleteSuitableForMutation,

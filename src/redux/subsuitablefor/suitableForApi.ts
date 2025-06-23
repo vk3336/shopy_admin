@@ -17,7 +17,7 @@ export const subsuitableforApi = apiSlice.injectEndpoints({
                 id: sf._id,
               })),
             ]
-          : [{ type: "SubsuitableFor", id: "LIST" }],
+          : [{ type: "SubSuitableFor", id: "LIST" }],
     }),
 
     // GET /subsuitablefor/view/:id
