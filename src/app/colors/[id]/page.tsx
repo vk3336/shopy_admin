@@ -7,7 +7,7 @@ import Breadcrumb from "@/app/components/breadcrumb/breadcrumb";
 import EditColor from "@/app/components/color/edit-color";
 
 export default function EditColorPage() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
   if (!id) return (
     <Wrapper>

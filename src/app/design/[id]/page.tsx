@@ -7,7 +7,7 @@ import Breadcrumb from "@/app/components/breadcrumb/breadcrumb";
 import EditDesign from "@/app/components/design/edit-design";
 
 export default function EditDesignPage() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
   if (!id) return <Wrapper><p className="p-8 text-red-500">No design selected.</p></Wrapper>;
 
@@ -17,7 +17,7 @@ export default function EditDesignPage() {
         <Breadcrumb title="Edit Design" subtitle="" />
         <div className="mt-6 flex justify-center">
           <div className="w-full max-w-md bg-white rounded-md shadow p-8">
-            <EditDesign id={id} />
+            <EditDesign />
           </div>
         </div>
       </div>

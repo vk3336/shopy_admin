@@ -5,6 +5,7 @@ import { ISubFinish } from "@/types/subfinish-type";
 import { useAddSubFinishMutation } from "@/redux/subfinish/subfinishApi";
 // ← Pull in your Finish list, not Structure:
 import { useGetAllFinishQuery } from "@/redux/finish/finishApi";
+import { IFinish } from "@/types/finish-type";
 import ErrorMsg from "@/app/components/common/error-msg";
 
 type FormVals = { name: string; finishId: string };
@@ -34,7 +35,7 @@ export default function AddSubFinish() {
   };
 
   if (isLoading) return <p>Loading finishes…</p>;
-  if (isError) return <ErrorMsg message="Couldn’t load finish options" />;
+  if (isError) return <ErrorMsg msg="Couldn't load finish options" />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-8 py-8 rounded-md">
@@ -51,7 +52,7 @@ export default function AddSubFinish() {
           className="input w-full h-[44px] rounded-md border border-gray6 px-6 text-base"
         >
           <option value="">Select…</option>
-          {finishes?.data.map((f) => (
+          {finishes?.data.map((f: IFinish) => (
             <option key={f._id} value={f._id}>
               {f.name}
             </option>

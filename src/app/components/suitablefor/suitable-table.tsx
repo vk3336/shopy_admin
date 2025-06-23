@@ -5,7 +5,8 @@ import { ISuitableFor } from "@/types/suitable-for-type";
 import {
   useGetAllSuitableForQuery,
   useDeleteSuitableForMutation,
-} from "@/redux/suitablefor/suitableforApi";
+} from "@/redux/suitableFor/suitableForApi";
+import SuitableForEditDelete from "./edit-delete-suitable";
 
 export default function SuitableForTable() {
   const { data, isLoading, isError } = useGetAllSuitableForQuery();

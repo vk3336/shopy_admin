@@ -5,10 +5,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import { useGetCategoryQuery, useUpdateCategoryMutation } from "@/redux/newcategory/newcategoryApi";
 import { useForm } from "react-hook-form";
-import { ICategory } from "@/types/category-type";
+import { IAddCategory } from "@/types/category-type";
 
 export default function EditCategory() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const { data, isLoading: isFetching } = useGetCategoryQuery(id || "");
   const [updateCategory, { isLoading: isSubmitting }] = useUpdateCategoryMutation();
 
@@ -17,7 +17,7 @@ export default function EditCategory() {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<Pick<ICategory, "name" | "productType" | "parent">>();
+  } = useForm<Pick<IAddCategory, "parent" | "productType"> & { name: string }>();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 

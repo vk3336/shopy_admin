@@ -15,7 +15,7 @@ interface FormValues {
 }
 
 export default function EditStructure() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
 
   // Fetch one structure by ID
@@ -66,7 +66,7 @@ export default function EditStructure() {
 
   if (isFetching) return <p>Loading…</p>;
   if (fetchError || !data)
-    return <ErrorMsg message="Failed to load structure." />;
+    return <ErrorMsg msg="Failed to load structure." />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

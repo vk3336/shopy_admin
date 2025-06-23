@@ -11,7 +11,7 @@ import ErrorMsg from "@/app/components/common/error-msg";
 import { IContent } from "@/types/content-type";
 
 export default function EditContent() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
 
   // Fetch single content by ID
@@ -56,7 +56,7 @@ export default function EditContent() {
 
   if (isFetching) return <p>Loading…</p>;
   if (fetchError || !data)
-    return <ErrorMsg message="Failed to load content." />;
+    return <ErrorMsg msg="Failed to load content." />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

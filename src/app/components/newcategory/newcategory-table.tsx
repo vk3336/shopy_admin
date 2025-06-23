@@ -3,7 +3,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ICategory } from "@/types/category-type";
+import { ICategoryItem } from "@/types/category-type";
 import {
   useGetAllCategoryQuery,
   useDeleteCategoryMutation,
@@ -40,13 +40,13 @@ export default function CategoryTable() {
               </td>
             </tr>
           ) : (
-            data.data.map((c: ICategory) => (
+            data.data.map((c: ICategoryItem) => (
               <tr key={c._id}>
                 <td className="py-2">
-                  {c.image ? (
+                  {c.img ? (
                     <img
-                      src={`${BASE}/uploads/${c.image}`}
-                      alt={c.name}
+                      src={`${BASE}/uploads/${c.img}`}
+                      alt={c.productType}
                       className="w-12 h-12 object-cover rounded"
                     />
                   ) : (
@@ -55,7 +55,6 @@ export default function CategoryTable() {
                     </div>
                   )}
                 </td>
-                <td className="py-2">{c.name}</td>
                 <td className="py-2">{c.productType}</td>
                 <td className="py-2">{c.parent}</td>
                 <td className="py-2 flex space-x-2">

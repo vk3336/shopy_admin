@@ -8,7 +8,7 @@ import {
   useUpdateSubSuitableForMutation,
 } from "@/redux/subsuitablefor/subsuitableApi";
 // ← RIGHT hook for parent dropdown:
-import { useGetAllSuitableForQuery } from "@/redux/suitablefor/suitableforApi";
+import { useGetAllSuitableForQuery } from "@/redux/suitableFor/suitableForApi";
 import ErrorMsg from "@/app/components/common/error-msg";
 
 type FormVals = { name: string; suitableForId: string };
@@ -35,8 +35,8 @@ export default function EditSubSuitableFor({ id }: { id: string }) {
   };
 
   if (isLoading || lp) return <p>Loading…</p>;
-  if (isError) return <ErrorMsg message="Failed to load item" />;
-  if (pe) return <ErrorMsg message="Failed to load parent options" />;
+  if (isError) return <ErrorMsg msg="Failed to load item" />;
+  if (pe) return <ErrorMsg msg="Failed to load parent options" />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-8 py-8 rounded-md">
@@ -47,7 +47,7 @@ export default function EditSubSuitableFor({ id }: { id: string }) {
           className="input w-full h-[44px] rounded-md border border-gray6 px-6 text-base"
         >
           <option value="">Select…</option>
-          {parents!.data.map((p) => (
+          {parents!.data.map((p: { _id: string; name: string }) => (
             <option key={p._id} value={p._id}>{p.name}</option>
           ))}
         </select>

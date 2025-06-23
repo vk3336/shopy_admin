@@ -8,7 +8,7 @@ import ErrorMsg from "@/app/components/common/error-msg";
 import { IDesign } from "@/types/design-type";
 
 export default function EditDesign() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
 
   // Fetch single design by ID
@@ -53,7 +53,7 @@ export default function EditDesign() {
 
   if (isFetching) return <p>Loading…</p>;
   if (fetchError || !data)
-    return <ErrorMsg message="Failed to load design." />;
+    return <ErrorMsg msg="Failed to load design." />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-8 py-8 rounded-md space-y-6">

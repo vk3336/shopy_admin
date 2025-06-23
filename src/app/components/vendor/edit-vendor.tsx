@@ -11,7 +11,7 @@ import ErrorMsg from "@/app/components/common/error-msg";
 import { IVendor } from "@/types/vendor-type";
 
 export default function EditVendor() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
 
   // 1) Fetch the single vendor
@@ -52,7 +52,7 @@ export default function EditVendor() {
   };
 
   if (isFetching) return <p>Loading…</p>;
-  if (fetchError || !data) return <ErrorMsg message="Failed to load vendor." />;
+  if (fetchError || !data) return <ErrorMsg msg="Failed to load vendor." />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-8 py-8 rounded-md space-y-6">

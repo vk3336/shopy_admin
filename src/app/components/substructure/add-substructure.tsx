@@ -5,6 +5,7 @@ import { ISubstructure } from "@/types/substructure-type";
 import { useAddSubstructureMutation } from "@/redux/substructure/substructureApi";
 import { useGetAllStructuresQuery } from "@/redux/structure/structureApi";
 import ErrorMsg from "@/app/components/common/error-msg";
+import { IStructure } from "@/types/structure-type";
 
 type FormValues = {
   name: string;
@@ -28,7 +29,7 @@ export default function AddSubstructure() {
   };
 
   if (isLoading) return <p>Loading structures…</p>;
-  if (isError) return <ErrorMsg message="Failed to load structures" />;
+  if (isError) return <ErrorMsg msg="Failed to load structures" />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-8 py-8 rounded-md">
@@ -40,7 +41,7 @@ export default function AddSubstructure() {
           className="input w-full h-[44px] rounded-md border border-gray6 px-6 text-base"
         >
           <option value="">Select a structure</option>
-          {structures?.data?.map((s) => (
+          {structures?.data?.map((s: IStructure) => (
             <option key={s._id} value={s._id}>
               {s.name}
             </option>

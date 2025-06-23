@@ -28,7 +28,7 @@ export default function EditMotif({ id }: { id: string }) {
   };
 
   if (isLoading) return <p>Loading…</p>;
-  if (isError || !data) return <ErrorMsg message="Failed to load motif." />;
+  if (isError || !data) return <ErrorMsg msg="Failed to load motif." />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-8 py-8 rounded-md">

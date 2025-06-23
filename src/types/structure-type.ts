@@ -1,4 +1,3 @@
-
 export interface ICategoryItem {
   _id: string;
   img: string;
@@ -41,6 +40,12 @@ export interface IAddCategoryResponse {
 export interface ICategoryDeleteRes {
   success?: boolean;
   message?: string;
+}
+
+export interface IStructure {
+  _id?: string;
+  name: string;
+  img?: string;
 }
 
 

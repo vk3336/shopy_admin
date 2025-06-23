@@ -62,4 +62,5 @@ export default function UniqueCodeEditDelete({ id }: Props) {
         <DeleteTooltip showDelete={showDelete} />
       </div>
     </div>
+  );
 }

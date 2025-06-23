@@ -8,6 +8,7 @@ import {
 } from "@/redux/subfinish/subfinishApi";
 // ← import your Finish list hook instead of Structure
 import { useGetAllFinishQuery } from "@/redux/finish/finishApi";
+import { IFinish } from "@/types/finish-type";
 import ErrorMsg from "@/app/components/common/error-msg";
 import { ISubFinish } from "@/types/subfinish-type";
 
@@ -47,8 +48,8 @@ export default function EditSubFinish({ id }: { id: string }) {
   };
 
   if (isLoading || loadFin) return <p>Loading…</p>;
-  if (isError) return <ErrorMsg message="Failed to load sub-finish" />;
-  if (errFin) return <ErrorMsg message="Failed to load parent finishes" />;
+  if (isError) return <ErrorMsg msg="Failed to load sub-finish" />;
+  if (errFin) return <ErrorMsg msg="Failed to load parent finishes" />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-8 py-8 rounded-md">
@@ -60,7 +61,7 @@ export default function EditSubFinish({ id }: { id: string }) {
           className="input w-full h-[44px] rounded-md border border-gray6 px-6 text-base"
         >
           <option value="">Select a finish…</option>
-          {finishes?.data.map((f) => (
+          {finishes?.data.map((f: IFinish) => (
             <option key={f._id} value={f._id}>
               {f.name}
             </option>

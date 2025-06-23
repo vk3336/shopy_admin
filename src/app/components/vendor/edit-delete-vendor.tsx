@@ -63,4 +63,5 @@ export default function VendorEditDelete({ id }: Props) {
         <DeleteTooltip showDelete={showDelete} />
       </div>
     </div>
+  );
 }

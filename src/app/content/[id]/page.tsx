@@ -7,7 +7,7 @@ import Breadcrumb from "@/app/components/breadcrumb/breadcrumb";
 import EditContent from "@/app/components/content/edit-content";
 
 export default function EditContentPage() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
   if (!id) return <Wrapper><p>No content selected.</p></Wrapper>;
 
@@ -17,7 +17,7 @@ export default function EditContentPage() {
         <Breadcrumb title="Edit Content" subtitle="" />
         <div className="mt-6 flex justify-center">
           <div className="w-full max-w-md bg-white rounded-md shadow p-8">
-            <EditContent id={id} onDone={() => router.push("/content")} />
+            <EditContent />
           </div>
         </div>
       </div>

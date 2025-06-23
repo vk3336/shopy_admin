@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import DeleteTooltip from "../tooltip/delete-tooltip";
 import EditTooltip from "../tooltip/edit-tooltip";
-import { useDeleteSuitableForMutation } from "@/redux/suitablefor/suitableforApi";
+import { useDeleteSuitableForMutation } from "@/redux/suitableFor/suitableForApi";
 import { notifyError } from "@/utils/toast";
 import { useRouter } from "next/navigation";
 
@@ -64,4 +64,5 @@ export default function SuitableForEditDelete({ id }: Props) {
         <DeleteTooltip showDelete={showDelete} />
       </div>
     </div>
+  );
 }

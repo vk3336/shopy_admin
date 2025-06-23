@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import {
   useGetSuitableForQuery,
   useUpdateSuitableForMutation,
-} from "@/redux/suitablefor/suitableforApi";
+} from "@/redux/suitableFor/suitableForApi";
 import GlobalImgUpload from "@/app/components/structure/global-img-upload";
 import ErrorMsg from "@/app/components/common/error-msg";
 import { ISuitableFor } from "@/types/suitable-for-type";
@@ -31,7 +31,7 @@ export default function EditSuitableFor({ id }: { id: string }) {
   };
 
   if (isLoading) return <p>Loading…</p>;
-  if (isError || !data) return <ErrorMsg message="Failed to load suitable-for." />;
+  if (isError || !data) return <ErrorMsg msg="Failed to load suitable-for." />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-8 py-8 rounded-md">

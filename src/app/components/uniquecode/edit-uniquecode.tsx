@@ -12,7 +12,7 @@ import ErrorMsg from "@/app/components/common/error-msg";
 import { IUniqueCode } from "@/types/uniquecode-type";
 
 export default function EditUniqueCode() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
 
   // 1) Fetch single unique-code
@@ -54,7 +54,7 @@ export default function EditUniqueCode() {
   };
 
   if (isFetching) return <p>Loading…</p>;
-  if (fetchError || !data) return <ErrorMsg message="Failed to load unique-code." />;
+  if (fetchError || !data) return <ErrorMsg msg="Failed to load unique-code." />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-8 py-8 rounded-md space-y-6">

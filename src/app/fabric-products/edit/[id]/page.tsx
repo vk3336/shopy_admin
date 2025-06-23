@@ -8,7 +8,7 @@ interface Props { params: { id: string } }
 export default function EditProductPage({ params }: Props) {
   return (
     <Wrapper>
-      <AddProductForm productId={params.id} />
+      <AddProductForm />
     </Wrapper>
   );
 }

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ISuitableFor } from "@/types/suitable-for-type";
-import { useAddSuitableForMutation } from "@/redux/suitablefor/suitableforApi";
+import { useAddSuitableForMutation } from "@/redux/suitableFor/suitableForApi";
 import GlobalImgUpload from "@/app/components/structure/global-img-upload";
 
 export default function AddSuitableFor() {
