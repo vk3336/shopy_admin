@@ -7,7 +7,7 @@ import Breadcrumb from "@/app/components/breadcrumb/breadcrumb";
 import EditFinish from "@/app/components/finish/edit-finish";
 
 export default function EditFinishPage() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
   if (!id) return <Wrapper><p className="p-8 text-red-500">No finish selected.</p></Wrapper>;
 
@@ -17,7 +17,7 @@ export default function EditFinishPage() {
         <Breadcrumb title="Edit Finish" subtitle="" />
         <div className="mt-6 flex justify-center">
           <div className="w-full max-w-md bg-white rounded-md shadow p-8">
-            <EditFinish id={id} />
+            <EditFinish />
           </div>
         </div>
       </div>
