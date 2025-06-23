@@ -4,7 +4,7 @@ import { ISubSuitableFor } from "@/types/subsuitable-type";
 import {
   useGetAllSubSuitableForQuery,
   useDeleteSubSuitableForMutation,
-} from "@/redux/subsuitablefor/subsuitableApi";
+} from "@/redux/subsuitablefor/suitableForApi";
 import SubSuitableForEditDelete from "./edit-delete-subsuitable";
 
 export default function SubSuitableForTable() {

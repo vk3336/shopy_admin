@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useUpdateSubSuitableForMutation } from "@/redux/subsuitablefor/subsuitableApi";
+import { useUpdateSubSuitableForMutation } from "@/redux/subsuitablefor/suitableForApi";
 
 export default function useSubSuitableForSubmit() {
   const {

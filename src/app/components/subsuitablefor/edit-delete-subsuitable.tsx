@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import DeleteTooltip from "../tooltip/delete-tooltip";
 import EditTooltip from "../tooltip/edit-tooltip";
-import { useDeleteSubSuitableForMutation } from "@/redux/subsuitablefor/subsuitableApi";
+import { useDeleteSubSuitableForMutation } from "@/redux/subsuitablefor/suitableForApi";
 import { notifyError } from "@/utils/toast";
 
 type Props = { id: string; onDelete: () => void };

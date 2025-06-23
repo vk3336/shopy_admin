@@ -4,7 +4,6 @@ import { ISubSuitableFor } from "@/types/subsuitable-type";
 
 export const subsuitableforApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["SubSuitableFor"],
   endpoints: (builder) => ({
     // GET /subsuitablefor/view
     getAllSubSuitableFor: builder.query<{ data: ISubSuitableFor[] }, void>({
@@ -18,7 +17,7 @@ export const subsuitableforApi = apiSlice.injectEndpoints({
                 id: sf._id,
               })),
             ]
-          : [{ type: "SubSuitableFor", id: "LIST" }],
+          : [{ type: "SubsuitableFor", id: "LIST" }],
     }),
 
     // GET /subsuitablefor/view/:id

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ISubSuitableFor } from "@/types/subsuitable-type";
-import { useAddSubSuitableForMutation } from "@/redux/subsuitablefor/subsuitableApi";
+import { useAddSubSuitableForMutation } from "@/redux/subsuitablefor/suitableForApi";
 // ← correct import for parent dropdown:
 import { useGetAllSuitableForQuery } from "@/redux/suitableFor/suitableForApi";
 import ErrorMsg from "@/app/components/common/error-msg";

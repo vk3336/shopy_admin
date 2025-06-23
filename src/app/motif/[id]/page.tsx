@@ -6,7 +6,7 @@ import Breadcrumb from "@/app/components/breadcrumb/breadcrumb";
 import EditMotif from "@/app/components/motif/edit-motif";
 
 export default function EditMotifPage() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const router = useRouter();
   if (!id) return <Wrapper><p className="p-8 text-red-500">No motif selected.</p></Wrapper>;
 

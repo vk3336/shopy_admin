@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import {
   useGetSubSuitableForQuery,
   useUpdateSubSuitableForMutation,
-} from "@/redux/subsuitablefor/subsuitableApi";
+} from "@/redux/subsuitablefor/suitableForApi";
 // ← RIGHT hook for parent dropdown:
 import { useGetAllSuitableForQuery } from "@/redux/suitableFor/suitableForApi";
 import ErrorMsg from "@/app/components/common/error-msg";
