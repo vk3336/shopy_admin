@@ -6,7 +6,8 @@ import Breadcrumb from "@/app/components/breadcrumb/breadcrumb";
 import EditUniqueCode from "@/app/components/uniquecode/edit-uniquecode";
 
 export default function EditUniqueCodePage() {
-  const { id } = useParams<{ id: string }>();
+  const params = useParams();
+  const id = params?.id as string;
   const router = useRouter();
   if (!id) return <Wrapper><p className="p-8 text-red-500">No item selected.</p></Wrapper>;
 

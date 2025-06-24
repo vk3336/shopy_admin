@@ -49,12 +49,10 @@ const useCouponSubmit = () => {
 
       console.log(coupon_data)
       const res = await addCoupon({ ...coupon_data });
-      if ("error" in res) {
-        if ("data" in res.error) {
-          const errorData = res.error.data as { message?: string };
-          if (typeof errorData.message === "string") {
-            return notifyError(errorData.message);
-          }
+      if ("error" in res && res.error && "data" in res.error) {
+        const errorData = res.error.data as { message?: string };
+        if (typeof errorData.message === "string") {
+          return notifyError(errorData.message);
         }
       } else {
         notifySuccess("Coupon added successfully");
@@ -83,12 +81,10 @@ const useCouponSubmit = () => {
         productType: selectProductType,
       };
       const res = await editCoupon({ id, data: coupon_data });
-      if ("error" in res) {
-        if ("data" in res.error) {
-          const errorData = res.error.data as { message?: string };
-          if (typeof errorData.message === "string") {
-            return notifyError(errorData.message);
-          }
+      if ("error" in res && res.error && "data" in res.error) {
+        const errorData = res.error.data as { message?: string };
+        if (typeof errorData.message === "string") {
+          return notifyError(errorData.message);
         }
       } else {
         notifySuccess("Coupon update successfully");

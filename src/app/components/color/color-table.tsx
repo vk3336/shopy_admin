@@ -26,14 +26,8 @@ export default function ColorTable() {
           </tr>
         </thead>
         <tbody>
-          {data?.data?.length === 0 ? (
-            <tr>
-              <td colSpan={4} className="text-center text-gray-500 py-4">
-                No colors found.
-              </td>
-            </tr>
-          ) : (
-            data.data.map((c: IColor) => (
+          {data?.data?.length ? (
+            data?.data?.map((c: IColor) => (
               <tr key={c._id}>
                 <td className="py-2">
                   {c.img && <Image src={c.img} alt={c.name} width={48} height={48} className="object-cover rounded" />}
@@ -56,6 +50,12 @@ export default function ColorTable() {
                 </td>
               </tr>
             ))
+          ) : (
+            <tr>
+              <td colSpan={4} className="text-center text-gray-500 py-4">
+                No colors found.
+              </td>
+            </tr>
           )}
         </tbody>
       </table>

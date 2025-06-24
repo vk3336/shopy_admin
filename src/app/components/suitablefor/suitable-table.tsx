@@ -23,14 +23,8 @@ export default function SuitableForTable() {
           <tr><th className="py-2">Image</th><th className="py-2">Name</th><th className="py-2">Actions</th></tr>
         </thead>
         <tbody>
-          {data?.data?.length === 0 ? (
-            <tr>
-              <td colSpan={3} className="text-center text-gray-500 py-4">
-                No items found.
-              </td>
-            </tr>
-          ) : (
-            data.data.map((s: ISuitableFor) => (
+          {data?.data?.length ? (
+            data?.data?.map((s: ISuitableFor) => (
               <tr key={s._id}>
                 <td className="py-2">
                   {s.img && <img src={s.img} alt={s.name} className="w-12 h-12 object-cover rounded" />}
@@ -48,6 +42,12 @@ export default function SuitableForTable() {
                 </td>
               </tr>
             ))
+          ) : (
+            <tr>
+              <td colSpan={3} className="text-center text-gray-500 py-4">
+                No items found.
+              </td>
+            </tr>
           )}
         </tbody>
       </table>

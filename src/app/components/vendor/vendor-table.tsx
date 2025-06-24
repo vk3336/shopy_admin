@@ -33,7 +33,7 @@ export default function VendorTable() {
               </td>
             </tr>
           ) : (
-            data.data.map((v: IVendor) => (
+            data?.data?.map((v: IVendor) => (
               <tr key={v._id}>
                 <td className="py-2">
                   {v.img && (

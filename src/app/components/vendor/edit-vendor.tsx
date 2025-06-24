@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   useGetVendorQuery,
   useUpdateVendorMutation,
@@ -10,8 +10,11 @@ import GlobalImgUpload from "@/app/components/structure/global-img-upload";
 import ErrorMsg from "@/app/components/common/error-msg";
 import { IVendor } from "@/types/vendor-type";
 
-export default function EditVendor() {
-  const { id } = useParams();
+type EditVendorProps = {
+  id: string;
+};
+
+export default function EditVendor({ id }: EditVendorProps) {
   const router = useRouter();
 
   // 1) Fetch the single vendor

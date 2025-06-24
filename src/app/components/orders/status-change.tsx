@@ -16,10 +16,8 @@ const OrderStatusChange = ({ id }: { id: string }) => {
   const handleChange = async (value: string | undefined, id: string) => {
     if (value) {
       const res = await updateStatus({ id, status: { status: value } });
-      if ("data" in res) {
-        if ("message" in res.data) {
-          notifySuccess(res.data.message);
-        }
+      if ("data" in res && res.data && typeof res.data === "object" && "message" in res.data) {
+        notifySuccess(res.data.message);
       }
     }
   };

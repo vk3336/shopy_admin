@@ -25,8 +25,8 @@ export default function AddSubFinish() {
   const onSubmit = async (vals: FormVals) => {
     setApiError(null);
     try {
-      // send finishId instead of structureId
-      await addSF({ name: vals.name, finishId: vals.finishId }).unwrap();
+      // send structureId instead of finishId
+      await addSF({ name: vals.name, structureId: vals.finishId }).unwrap();
       reset();
     } catch (err: any) {
       console.error("Add Sub-Finish failed:", err);

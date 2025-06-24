@@ -7,7 +7,8 @@ import Breadcrumb from "@/app/components/breadcrumb/breadcrumb";
 import EditCategory from "@/app/components/newcategory/edit-newcategory";
 
 export default function EditCategoryPage() {
-  const { id } = useParams<{ id: string }>();
+  const params = useParams();
+  const id = params?.id as string;
   if (!id) {
     return (
       <Wrapper>

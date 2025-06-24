@@ -35,11 +35,11 @@ export default function UniqueCodeTable() {
                 colSpan={3}
                 className="text-center text-gray-500 py-4"
               >
-                No items found.
+                No unique codes found.
               </td>
             </tr>
           ) : (
-            data.data.map((u: IUniqueCode) => (
+            data?.data?.map((u: IUniqueCode) => (
               <tr key={u._id}>
                 <td className="py-2">
                   {u.img && (

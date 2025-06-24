@@ -27,7 +27,7 @@ export default function DesignTable() {
               </td>
             </tr>
           ) : (
-            data.data.map((d: IDesign) => (
+            data?.data?.map((d: IDesign) => (
               <tr key={d._id}>
                 <td className="py-2">
                   {d.img && <Image src={d.img} alt={d.name} width={48} height={48} className="object-cover rounded" />}

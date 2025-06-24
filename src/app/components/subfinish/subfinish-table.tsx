@@ -26,14 +26,14 @@ export default function SubFinishTable() {
           </tr>
         </thead>
         <tbody>
-          {!data || data.data.length === 0 ? (
+          {data?.data?.length === 0 ? (
             <tr>
               <td colSpan={3} className="text-center text-gray-500 py-4">
-                No items found.
+                No subfinish data found.
               </td>
             </tr>
           ) : (
-            data.data.map((sf: ISubFinish) => (
+            data?.data?.map((sf: ISubFinish) => (
               <tr key={sf._id}>
                 <td className="py-2">{sf.name}</td>
                 <td className="py-2">{sf.structureId}</td>

@@ -2,9 +2,8 @@
 import { apiSlice } from "../api/apiSlice";
 import { IUniqueCode } from "@/types/uniquecode-type";
 
-export const uniquecodeApi = apiSlice.injectEndpoints({
+export const uniqueCodeApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["UniqueCode"],
   endpoints: (builder) => ({
     getAllUniqueCodes: builder.query<{ data: IUniqueCode[] }, void>({
       query: () => "/api/uniquecode/view",
@@ -55,4 +54,4 @@ export const {
   useAddUniqueCodeMutation,
   useUpdateUniqueCodeMutation,
   useDeleteUniqueCodeMutation,
-} = uniquecodeApi;
+} = uniqueCodeApi;

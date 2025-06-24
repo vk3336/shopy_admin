@@ -9,7 +9,11 @@ import {
   useDeleteStructureMutation,
 } from "@/redux/structure/structureApi";
 
-const StructureTable: React.FC = () => {
+type StructureTableProps = {
+  onEditClick: React.Dispatch<React.SetStateAction<string | null>>;
+};
+
+const StructureTable: React.FC<StructureTableProps> = ({ onEditClick }) => {
   const { data, isLoading, isError } = useGetAllStructuresQuery();
   const [deleteStructure] = useDeleteStructureMutation();
 
@@ -24,6 +28,8 @@ const StructureTable: React.FC = () => {
           <tr>
             <th className="py-2">Image</th>
             <th className="py-2">Name</th>
+            {/* <th className="py-2">Parent</th> */}
+            {/* <th className="py-2">Description</th> */}
             <th className="py-2">Actions</th>
           </tr>
         </thead>
@@ -35,27 +41,26 @@ const StructureTable: React.FC = () => {
               </td>
             </tr>
           ) : (
-            data.data.map((item: IStructure) => (
+            data?.data?.map((item: IStructure) => (
               <tr key={item._id}>
                 <td className="py-2">
                   {item.img && (
                     <img
                       src={item.img}
                       alt={item.name}
-                      className="w-12 h-12 object-cover rounded"
+                      width={48}
+                      height={48}
+                      className="object-cover rounded"
                     />
                   )}
                 </td>
                 <td className="py-2">{item.name}</td>
+                {/* <td className="py-2">{item.parent}</td> */}
+                {/* <td className="py-2">{item.description}</td> */}
                 <td className="py-2 flex space-x-2">
-                  {/* Edit navigates to the dynamic edit page */}
                   <Link href={`/structure/${item._id}`}>
-                    <button className="tp-btn px-3 py-1 bg-green-500 text-white rounded">
-                      ✏️ Edit
-                    </button>
+                    <button className="tp-btn px-3 py-1 bg-green-500 text-white rounded">✏️ Edit</button>
                   </Link>
-
-                  {/* Delete calls the mutation directly */}
                   <button
                     onClick={() => deleteStructure(item._id!)}
                     className="tp-btn px-3 py-1 bg-red-500 text-white rounded"

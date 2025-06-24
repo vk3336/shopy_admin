@@ -40,6 +40,17 @@ export const apiSlice = createApi({
     "Product",   // ← ensure Product is declared here
     "SuitableFor",
     "SubSuitableFor",
+    "Color",
+    "Content",
+    "Design",
+    "Vendor",
+    "UniqueCode",
+    "Substructure",
+    "SubFinish",
+    "AllStructures",
+    "Category",
+    "Motif",
+    "Finish",
   ],
   endpoints: () => ({}),
 });

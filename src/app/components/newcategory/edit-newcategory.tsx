@@ -30,13 +30,13 @@ export default function EditCategory() {
   // Prefill form fields and initial preview from fetched data
   useEffect(() => {
     if (data?.data) {
-      const { name, productType, parent, image } = data.data;
+      const { name, productType, parent, img } = data.data;
       setValue("name", name);
       setValue("productType", productType);
       setValue("parent", parent);
 
-      if (image) {
-        setPreview(`${BASE}/uploads/${image}`);
+      if (img) {
+        setPreview(img.startsWith('blob:') ? img : `${BASE}/${img}`);
       }
     }
   }, [data, setValue, BASE]);
@@ -56,7 +56,7 @@ export default function EditCategory() {
     fd.append("productType", vals.productType);
     fd.append("parent", vals.parent);
     if (file) {
-      fd.append("image", file);
+      fd.append("img", file);
     }
 
     await updateCategory({ id: id!, formData: fd }).unwrap();

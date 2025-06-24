@@ -13,6 +13,15 @@ import ProductImgUpload from "../add-product/product-img-upload";
 import Tags from "../add-product/tags";
 import ProductCategory from "../../category/product-category";
 
+// Utility to convert string/null to Date/null for DateValueType
+function toDateValueType(val: { startDate: string | null; endDate: string | null } | undefined) {
+  if (!val) return { startDate: null, endDate: null };
+  return {
+    startDate: val.startDate ? new Date(val.startDate) : null,
+    endDate: val.endDate ? new Date(val.endDate) : null,
+  };
+}
+
 const EditProductSubmit = ({ id }: { id: string }) => {
   const { data: product, isError, isLoading } = useGetProductQuery(id);
   const {
@@ -137,7 +146,7 @@ const EditProductSubmit = ({ id }: { id: string }) => {
                   <OfferDatePicker
                     offerDate={offerDate}
                     setOfferDate={setOfferDate}
-                    defaultValue={product.offerDate}
+                    defaultValue={toDateValueType(product.offerDate)}
                   />
                   <span className="text-tiny leading-4">
                     set the product offer and end date

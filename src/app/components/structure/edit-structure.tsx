@@ -10,12 +10,16 @@ import {
 import ErrorMsg from "@/app/components/common/error-msg";
 import GlobalImgUpload from "@/app/components/structure/global-img-upload";
 
+type EditStructureProps = {
+  id: string;
+  onDone: () => void;
+};
+
 interface FormValues {
   name: string;
 }
 
-export default function EditStructure() {
-  const { id } = useParams();
+export default function EditStructure({ id, onDone }: EditStructureProps) {
   const router = useRouter();
 
   // Fetch one structure by ID
@@ -58,7 +62,7 @@ export default function EditStructure() {
         id: id!,
         changes: { name: values.name, img: image },
       }).unwrap();
-      router.push("/structure");
+      onDone();
     } catch (err: any) {
       setErrorMessage(err?.data?.message || "Failed to update structure.");
     }

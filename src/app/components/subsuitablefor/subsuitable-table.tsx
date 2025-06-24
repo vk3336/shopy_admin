@@ -26,14 +26,14 @@ export default function SubSuitableForTable() {
           </tr>
         </thead>
         <tbody>
-          {!data || data.data.length === 0 ? (
+          {data?.data?.length === 0 ? (
             <tr>
               <td colSpan={3} className="text-center text-gray-500 py-4">
-                No items found.
+                No data found.
               </td>
             </tr>
           ) : (
-            data.data.map((ssf: ISubSuitableFor) => (
+            data?.data?.map((ssf: ISubSuitableFor) => (
               <tr key={ssf._id}>
                 <td className="py-2">{ssf.name}</td>
                 <td className="py-2">{ssf.suitableForId}</td>

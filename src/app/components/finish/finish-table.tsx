@@ -22,11 +22,11 @@ export default function FinishTable() {
           {data?.data?.length === 0 ? (
             <tr>
               <td colSpan={3} className="text-center text-gray-500 py-4">
-                No finish items found.
+                No finish data found.
               </td>
             </tr>
           ) : (
-            data.data.map((f: IFinish) => (
+            data?.data?.map((f: IFinish) => (
               <tr key={f._id}>
                 <td className="py-2">
                   {f.img && <img src={f.img} alt={f.name} className="w-12 h-12 object-cover rounded" />}

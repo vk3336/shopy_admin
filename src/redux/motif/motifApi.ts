@@ -4,7 +4,6 @@ import { IMotif } from "@/types/motif-type";
 
 export const motifApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["Motif"],
   endpoints: (builder) => ({
     getAllMotif: builder.query<{ data: IMotif[] }, void>({
       query: () => `/api/motifsize/view`,

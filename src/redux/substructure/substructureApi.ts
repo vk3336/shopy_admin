@@ -4,7 +4,6 @@ import { ISubstructure } from "@/types/substructure-type";
 
 export const substructureApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["Substructure"],
   endpoints: (builder) => ({
     // Fetch all
     getAllSubstructures: builder.query<{ data: ISubstructure[] }, void>({

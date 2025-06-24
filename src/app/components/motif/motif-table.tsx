@@ -26,7 +26,7 @@ export default function MotifTable() {
               </td>
             </tr>
           ) : (
-            data.data.map((m: IMotif) => (
+            data?.data?.map((m: IMotif) => (
               <tr key={m._id}>
                 <td className="py-2">
                   {m.img && <img src={m.img} alt={m.name} className="w-12 h-12 object-cover rounded" />}

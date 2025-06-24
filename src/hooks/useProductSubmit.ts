@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import {useRouter} from 'next/navigation';
 import { useAddProductMutation, useEditProductMutation } from "@/redux/product/productApi";
 import { notifyError, notifySuccess } from "@/utils/toast";
+import type { DateValueType } from "react-tailwindcss-datepicker";
 
 // ImageURL type
 export interface ImageURL {
@@ -44,10 +45,7 @@ const useProductSubmit = () => {
   const [productType, setProductType] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [videoId, setVideoId] = useState<string>("");
-  const [offerDate, setOfferDate] = useState<{
-    startDate: null;
-    endDate: null;
-  }>({
+  const [offerDate, setOfferDate] = useState<DateValueType>({
     startDate: null,
     endDate: null,
   });
@@ -108,6 +106,14 @@ const useProductSubmit = () => {
     reset();
   };
 
+  // Utility to convert DateType to string or null
+  function dateToString(val: unknown): string | null {
+    if (!val) return null;
+    if (typeof val === 'string') return val;
+    if (val instanceof Date) return val.toISOString();
+    return null;
+  }
+
   // handle submit product
   const handleSubmitProduct = async (data: any) => {
     // console.log("product data--->", data);
@@ -129,8 +135,8 @@ const useProductSubmit = () => {
       category: category,
       status: status,
       offerDate: {
-        startDate: offerDate.startDate,
-        endDate: offerDate.endDate,
+        startDate: dateToString((offerDate ?? { startDate: null }).startDate),
+        endDate: dateToString((offerDate ?? { endDate: null }).endDate),
       },
       productType: productType,
       description: data.description,
@@ -152,12 +158,10 @@ const useProductSubmit = () => {
       return notifyError("Product price must be gether than discount");
     } else {
       const res = await addProduct(productData);
-      if ("error" in res) {
-        if ("data" in res.error) {
-          const errorData = res.error.data as { message?: string };
-          if (typeof errorData.message === "string") {
-            return notifyError(errorData.message);
-          }
+      if ("error" in res && res.error && typeof res.error === "object" && "data" in res.error) {
+        const errorData = res.error.data as { message?: string };
+        if (typeof errorData.message === "string") {
+          return notifyError(errorData.message);
         }
       } else {
         notifySuccess("Product created successFully");
@@ -186,8 +190,8 @@ const useProductSubmit = () => {
       category: category,
       status: status,
       offerDate: {
-        startDate: offerDate.startDate,
-        endDate: offerDate.endDate,
+        startDate: dateToString((offerDate ?? { startDate: null }).startDate),
+        endDate: dateToString((offerDate ?? { endDate: null }).endDate),
       },
       productType: productType,
       description: data.description,
@@ -197,12 +201,10 @@ const useProductSubmit = () => {
     };
     console.log('edit productData---->',productData)
     const res = await editProduct({ id: id, data: productData });
-    if ("error" in res) {
-      if ("data" in res.error) {
-        const errorData = res.error.data as { message?: string };
-        if (typeof errorData.message === "string") {
-          return notifyError(errorData.message);
-        }
+    if ("error" in res && res.error && typeof res.error === "object" && "data" in res.error) {
+      const errorData = res.error.data as { message?: string };
+      if (typeof errorData.message === "string") {
+        return notifyError(errorData.message);
       }
     } else {
       notifySuccess("Product edit successFully");

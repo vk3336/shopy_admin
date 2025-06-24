@@ -1,11 +1,11 @@
 import { apiSlice } from "../api/apiSlice";
-import { IProduct } from "@/types/fabricproduct-type";
+import { IFabricProduct } from "@/types/fabricproduct-type";
 
 export const newProductApi = apiSlice.injectEndpoints({
   overrideExisting: false,
   endpoints: (builder) => ({
     // List products
-    getProducts: builder.query<{ data: IProduct[] }, { page: number; limit: number }>({
+    getProducts: builder.query<{ data: IFabricProduct[] }, { page: number; limit: number }>({
       query: ({ page, limit }) => `/api/newproduct/view?page=${page}&limit=${limit}`,
       providesTags: (result) =>
         result
@@ -17,14 +17,14 @@ export const newProductApi = apiSlice.injectEndpoints({
     }),
 
     // Single product
-    getProductById: builder.query<IProduct, string>({
+    getProductById: builder.query<IFabricProduct, string>({
       query: (id) => `/api/newproduct/view/${id}`,
-      transformResponse: (raw: { data: IProduct }) => raw.data,
+      transformResponse: (raw: { data: IFabricProduct }) => raw.data,
       providesTags: (result, error, id) => [{ type: "Product", id }],
     }),
 
     // Create product (multipart/form-data)
-    addProduct: builder.mutation<IProduct, FormData>({
+    addProduct: builder.mutation<IFabricProduct, FormData>({
       query: (formData) => ({
         url: "/api/newproduct/add",
         method: "POST",
@@ -35,7 +35,7 @@ export const newProductApi = apiSlice.injectEndpoints({
 
     // Update product (multipart/form-data)
     updateProduct: builder.mutation<
-      IProduct,
+      IFabricProduct,
       { id: string; body: FormData }
     >({
       query: ({ id, body }) => ({
@@ -50,7 +50,7 @@ export const newProductApi = apiSlice.injectEndpoints({
     }),
 
     // Delete product
-    deleteProduct: builder.mutation<{ status: number; data: IProduct }, string>({
+    deleteProduct: builder.mutation<{ status: number; data: IFabricProduct }, string>({
       query: (id) => ({ url: `/api/newproduct/delete/${id}`, method: "DELETE" }),
       invalidatesTags: (result, error, id) => [
         { type: "Product", id },

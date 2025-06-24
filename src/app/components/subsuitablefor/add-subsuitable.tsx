@@ -8,7 +8,7 @@ import { useAddSubSuitableForMutation } from "@/redux/subsuitablefor/suitableFor
 import { useGetAllSuitableForQuery } from "@/redux/suitableFor/suitableForApi";
 import ErrorMsg from "@/app/components/common/error-msg";
 
-type FormVals = { name: string; suitableforId: string };
+type FormVals = { name: string; suitableForId: string };
 
 export default function AddSubSuitableFor() {
   const {
@@ -25,7 +25,7 @@ export default function AddSubSuitableFor() {
   const onSubmit = async (vals: FormVals) => {
     setApiError(null);
     try {
-      await addSF({ name: vals.name, suitableforId: vals.suitableforId }).unwrap();
+      await addSF({ name: vals.name, suitableForId: vals.suitableForId }).unwrap();
       reset();
     } catch (err: any) {
       console.error("Add Sub-SuitableFor failed:", err);
@@ -47,7 +47,7 @@ export default function AddSubSuitableFor() {
       <div className="mb-6">
         <label className="block mb-1 text-base font-medium">Parent SuitableFor</label>
         <select
-          {...register("suitableforId", { required: "Select a parent suitablefor" })}
+          {...register("suitableForId", { required: "Select a parent suitablefor" })}
           className="input w-full h-[44px] rounded-md border border-gray6 px-6 text-base"
         >
           <option value="">Select…</option>
@@ -57,8 +57,8 @@ export default function AddSubSuitableFor() {
             </option>
           ))}
         </select>
-        {errors.suitableforId && (
-          <p className="text-red-500 text-sm mt-1">{errors.suitableforId.message}</p>
+        {errors.suitableForId && (
+          <p className="text-red-500 text-sm mt-1">{errors.suitableForId.message}</p>
         )}
       </div>
 

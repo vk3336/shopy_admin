@@ -4,7 +4,6 @@ import { IContent } from "@/types/content-type";
 
 export const contentApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["Content"],
   endpoints: (builder) => ({
     getAllContent: builder.query<{ data: IContent[] }, void>({
       query: () => "/api/content/viewcontent/",

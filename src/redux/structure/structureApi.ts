@@ -3,7 +3,6 @@ import { IStructure } from "@/types/structure-type";
 
 export const structureApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["AllStructures"],
   endpoints: (builder) => ({
     getAllStructures: builder.query<{ data: IStructure[] }, void>({
       query: () => "/api/structure/view",

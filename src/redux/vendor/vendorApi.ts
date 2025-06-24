@@ -4,7 +4,6 @@ import { IVendor } from "@/types/vendor-type";
 
 export const vendorApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["Vendor"],
   endpoints: (builder) => ({
     getAllVendors: builder.query<{ data: IVendor[] }, void>({
       query: () => "/api/vendor/view",

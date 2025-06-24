@@ -45,12 +45,10 @@ const useCategorySubmit = () => {
         children: categoryChildren,
       };
       const res = await addCategory({ ...category_data });
-      if ("error" in res) {
-        if ("data" in res.error) {
-          const errorData = res.error.data as { message?: string };
-          if (typeof errorData.message === "string") {
-            return notifyError(errorData.message);
-          }
+      if ("error" in res && res.error && "data" in res.error) {
+        const errorData = res.error.data as { message?: string };
+        if (typeof errorData.message === "string") {
+          return notifyError(errorData.message);
         }
       } else {
         notifySuccess("Category added successfully");
@@ -75,13 +73,10 @@ const useCategorySubmit = () => {
         children: categoryChildren,
       };
       const res = await editCategory({ id, data: category_data });
-      // console.log(res)
-      if ("error" in res) {
-        if ("data" in res.error) {
-          const errorData = res.error.data as { message?: string };
-          if (typeof errorData.message === "string") {
-            return notifyError(errorData.message);
-          }
+      if ("error" in res && res.error && "data" in res.error) {
+        const errorData = res.error.data as { message?: string };
+        if (typeof errorData.message === "string") {
+          return notifyError(errorData.message);
         }
       } else {
         notifySuccess("Category update successfully");

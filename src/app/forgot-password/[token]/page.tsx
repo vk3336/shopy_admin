@@ -35,18 +35,14 @@ const ForgetPasswordPage = ({ params }: { params: { token: string } }) => {
       password: data.password,
       token,
     });
-    if ("error" in res) {
-      if ("data" in res.error) {
-        const errorData = res.error.data as { message?: string };
-        if (typeof errorData.message === "string") {
-          return notifyError(errorData.message);
-        }
+    if ("error" in res && res.error && "data" in res.error) {
+      const errorData = res.error.data as { message?: string };
+      if (typeof errorData.message === "string") {
+        return notifyError(errorData.message);
       }
     } else {
-      if ("data" in res) {
-        if("message" in res.data){
-          notifySuccess(res.data.message);
-        }
+      if ("data" in res && res.data && typeof res.data === "object" && "message" in res.data) {
+        notifySuccess(res.data.message);
       }
       reset();
     }

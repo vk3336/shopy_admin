@@ -31,12 +31,10 @@ const StaffAction = ({ id }: IPropType) => {
       if (result.isConfirmed) {
         try {
           const res = await deleteStaff(id);
-          if ("error" in res) {
-            if ("data" in res.error) {
-              const errorData = res.error.data as { message?: string };
-              if (typeof errorData.message === "string") {
-                return notifyError(errorData.message);
-              }
+          if ("error" in res && res.error && typeof res.error === "object" && "data" in res.error) {
+            const errorData = res.error.data as { message?: string };
+            if (typeof errorData.message === "string") {
+              return notifyError(errorData.message);
             }
           } else {
             Swal.fire("Deleted!", `Your stuff has been deleted.`, "success");

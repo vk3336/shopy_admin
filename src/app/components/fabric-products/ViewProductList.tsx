@@ -12,39 +12,7 @@ import {
   useGetProductsQuery,
   useDeleteProductMutation,
 } from "@/redux/newproduct/NewProductApi";
-
-interface IProduct {
-  _id: string;
-  name: string;
-  sku?: string;
-  gsm: number;
-  oz: number;
-  cm: number;
-  inch: number;
-  quantity: number;
-  um: string;
-  salesPrice: number;
-  currency: string;
-  locationCode?: string;
-  groupcodeId?: string;
-  newCategoryId?: string;
-  structureId?: string;
-  subStructureId?: string;
-  contentId?: string;
-  finishId?: string;
-  subFinishId?: string;
-  designId?: string;
-  colorId?: string;
-  motifsizeId?: string;
-  suitableforId?: string;
-  subSuitableId?: string;
-  vendorId?: string;
-  uniqueCode?: string;
-  image?: string;
-  image1?: string;
-  image2?: string;
-  video?: string;
-}
+import { IFabricProduct } from "@/types/fabricproduct-type";
 
 export default function ViewProductTable() {
   const router = useRouter();
@@ -54,7 +22,7 @@ export default function ViewProductTable() {
   });
   const [deleteProduct] = useDeleteProductMutation();
 
-  const products: IProduct[] = resp?.data || [];
+  const products: IFabricProduct[] = resp?.data || [];
   const [filterText, setFilterText] = useState("");
 
   // Filter logic
@@ -84,7 +52,7 @@ export default function ViewProductTable() {
         p.inch,
         p.quantity,
         p.um,
-        p.salesPrice,
+        p.salesPrice || 0,
         p.currency,
       ]),
       styles: { fontSize: 8 },
@@ -93,7 +61,7 @@ export default function ViewProductTable() {
   };
 
   // Columns
-  const columns: TableColumn<IProduct>[] = useMemo(
+  const columns: TableColumn<IFabricProduct>[] = useMemo(
     () => [
       { name: "Name", selector: r => r.name, sortable: true, minWidth: "150px" },
       { name: "SKU", selector: r => r.sku||"—", maxWidth: "80px" },
@@ -103,7 +71,7 @@ export default function ViewProductTable() {
       { name: "Inch", selector: r => r.inch, maxWidth: "70px" },
       { name: "Qty", selector: r => r.quantity, maxWidth: "60px" },
       { name: "Unit", selector: r => r.um, maxWidth: "80px" },
-      { name: "Price", selector: r => r.salesPrice, maxWidth: "80px" },
+      { name: "Price", selector: r => r.salesPrice || 0, maxWidth: "80px" },
       { name: "Currency", selector: r => r.currency, maxWidth: "80px" },
       // …you can keep adding more columns as you need…
       {

@@ -40,12 +40,10 @@ const useStaffSubmit = () => {
           : dayjs(new Date()).format("YYYY-MM-DD"),
       };
       const res = await addStaff({ ...stuff_data });
-      if ("error" in res) {
-        if ("data" in res.error) {
-          const errorData = res.error.data as { message?: string };
-          if (typeof errorData.message === "string") {
-            return notifyError(errorData.message);
-          }
+      if ("error" in res && res.error && "data" in res.error) {
+        const errorData = res.error.data as { message?: string };
+        if (typeof errorData.message === "string") {
+          return notifyError(errorData.message);
         }
       } else {
         notifySuccess("Stuff added successfully");
@@ -73,13 +71,10 @@ const useStaffSubmit = () => {
           : dayjs(new Date()).format("YYYY-MM-DD"),
       };
       const res = await updateProfile({ id, data: stuff_data });
-      console.log(res)
-      if ("error" in res) {
-        if ("data" in res.error) {
-          const errorData = res.error.data as { message?: string };
-          if (typeof errorData.message === "string") {
-            return notifyError(errorData.message);
-          }
+      if ("error" in res && res.error && "data" in res.error) {
+        const errorData = res.error.data as { message?: string };
+        if (typeof errorData.message === "string") {
+          return notifyError(errorData.message);
         }
       } else {
         notifySuccess("Stuff update successfully");

@@ -40,12 +40,10 @@ const ProfileChangePass = () => {
         oldPass: data.password,
         newPass: data.newPassword,
       });
-      if ("error" in res) {
-        if ("data" in res.error) {
-          const errorData = res.error.data as { message?: string };
-          if (typeof errorData.message === "string") {
-            return notifyError(errorData.message);
-          }
+      if ("error" in res && res.error && "data" in res.error) {
+        const errorData = res.error.data as { message?: string };
+        if (typeof errorData.message === "string") {
+          return notifyError(errorData.message);
         }
       } else {
         notifySuccess("Password change successfully");

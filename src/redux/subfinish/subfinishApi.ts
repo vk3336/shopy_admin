@@ -4,7 +4,6 @@ import { ISubFinish } from "@/types/subfinish-type";
 
 export const subFinishApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["SubFinish"],
   endpoints: (builder) => ({
     getAllSubFinish: builder.query<{ data: ISubFinish[] }, void>({
       query: () => "/api/subfinish/view",

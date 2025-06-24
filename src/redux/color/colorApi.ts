@@ -4,7 +4,6 @@ import { IColor } from "@/types/color-type";
 
 export const colorApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["Color"],
   endpoints: (builder) => ({
     // List all
     getAllColor: builder.query<{ data: IColor[] }, void>({

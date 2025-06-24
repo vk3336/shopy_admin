@@ -3,7 +3,6 @@ import { IDesign } from "@/types/design-type";
 
 export const designApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["Design"],
   endpoints: (builder) => ({
     getAllDesign: builder.query<{ data: IDesign[] }, void>({
       query: () => "/api/design/view",

@@ -40,7 +40,7 @@ export default function CategoryTable() {
               </td>
             </tr>
           ) : (
-            data.data.map((c: ICategoryItem) => (
+            data?.data?.map((c: ICategoryItem) => (
               <tr key={c._id}>
                 <td className="py-2">
                   {c.img ? (

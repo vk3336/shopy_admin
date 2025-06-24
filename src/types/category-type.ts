@@ -1,6 +1,6 @@
-
 export interface ICategoryItem {
   _id: string;
+  name: string;
   img: string;
   parent: string;
   children: string[];

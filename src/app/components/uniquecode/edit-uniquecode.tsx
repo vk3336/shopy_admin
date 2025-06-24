@@ -2,7 +2,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   useGetUniqueCodeQuery,
   useUpdateUniqueCodeMutation,
@@ -11,8 +11,11 @@ import GlobalImgUpload from "@/app/components/structure/global-img-upload";
 import ErrorMsg from "@/app/components/common/error-msg";
 import { IUniqueCode } from "@/types/uniquecode-type";
 
-export default function EditUniqueCode() {
-  const { id } = useParams();
+type EditUniqueCodeProps = {
+  id: string;
+};
+
+export default function EditUniqueCode({ id }: EditUniqueCodeProps) {
   const router = useRouter();
 
   // 1) Fetch single unique-code

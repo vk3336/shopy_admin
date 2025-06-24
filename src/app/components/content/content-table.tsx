@@ -28,7 +28,7 @@ export default function ContentTable() {
               </td>
             </tr>
           ) : (
-            data.data.map((c: IContent) => (
+            data?.data?.map((c: IContent) => (
               <tr key={c._id}>
                 <td className="py-2">
                   {c.img && <Image src={c.img} alt={c.name} width={48} height={48} className="object-cover rounded" />}

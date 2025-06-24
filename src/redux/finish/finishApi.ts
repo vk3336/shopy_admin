@@ -4,7 +4,6 @@ import { IFinish } from "@/types/finish-type";
 
 export const finishApi = apiSlice.injectEndpoints({
   overrideExisting: true,
-  tagTypes: ["Finish"],
   endpoints: (builder) => ({
     getAllFinish: builder.query<{ data: IFinish[] }, void>({
       query: () => "/api/finish/view",

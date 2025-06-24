@@ -38,12 +38,12 @@ export default function EditSubFinish({ id }: { id: string }) {
   useEffect(() => {
     if (data) {
       setValue("name", data.data.name);
-      setValue("finishId", (data.data as any).finishId);
+      setValue("finishId", data.data.structureId);
     }
   }, [data, setValue]);
 
   const onSubmit = async (vals: FormVals) => {
-    await updateSF({ id, changes: { name: vals.name, finishId: vals.finishId } }).unwrap();
+    await updateSF({ id, changes: { name: vals.name, structureId: vals.finishId } }).unwrap();
     router.back();
   };
 
