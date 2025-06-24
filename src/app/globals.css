@@ -63,7 +63,7 @@
          @apply -translate-y-[2px];
     }
      .input{
-         @apply bg-white px-6 outline-none focus-within:outline-none focus-visible:outline-none rounded-md border border-gray focus:border-theme focus:bg-white text-tiny;
+         @apply bg-white px-6 outline-none focus-within:outline-none focus-visible:outline-none rounded-md border border-gray-300 focus:border-theme focus:bg-white text-tiny;
     }
      .nav-dot{
          @apply relative px-4 pl-[12px] after:absolute after:top-[11px] after:left-0 after:w-[3px] after:h-[3px] after:rounded-full after:bg-[#6D6F71] after:content-[''];

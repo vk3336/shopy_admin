@@ -1,7 +1,6 @@
 "use client";
 import React, { SetStateAction, useEffect, useState } from "react";
 import {
-  Card,
   Typography,
   List,
   ListItem,
@@ -74,7 +73,7 @@ export default function ProductCategory({
   };
 
   // decide what to render
-  let content = null;
+  let content: React.ReactNode = null;
 
   if (isLoading) {
     content = <h2>Loading....</h2>;
@@ -140,7 +139,7 @@ export default function ProductCategory({
   }
 
   function RenderCardContent() {
-    return <Card>{content}</Card>;
+    return <div>{content}</div>;
   }
 
   return (

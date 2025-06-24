@@ -33,10 +33,8 @@ const CouponAction = ({ id,setOpenSidebar }: IPropType) => {
       if (result.isConfirmed) {
         try {
           const res = await deleteCoupon(delId);
-          if ("data" in res) {
-            if ("success" in res.data) {
-              Swal.fire("Deleted!", `Your coupon has been deleted.`, "success");
-            }
+          if ("data" in res && res.data && typeof res.data === "object" && "success" in res.data) {
+            Swal.fire("Deleted!", `Your coupon has been deleted.`, "success");
           }
         } catch (error) {
           // Handle error or show error message
