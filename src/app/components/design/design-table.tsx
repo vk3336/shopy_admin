@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { IDesign } from "@/types/design-type";
 import { useGetAllDesignQuery, useDeleteDesignMutation } from "@/redux/design/designApi";
 
@@ -29,7 +30,7 @@ export default function DesignTable() {
             data.data.map((d: IDesign) => (
               <tr key={d._id}>
                 <td className="py-2">
-                  {d.img && <img src={d.img} alt={d.name} className="w-12 h-12 object-cover rounded" />}
+                  {d.img && <Image src={d.img} alt={d.name} width={48} height={48} className="object-cover rounded" />}
                 </td>
                 <td className="py-2">{d.name}</td>
                 <td className="py-2 flex space-x-2">

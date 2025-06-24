@@ -91,7 +91,7 @@ export default function ProductCategory({
 
     content = (
       <>
-        <List className="p-0">
+        <List className="p-0" {...({} as any)}>
           {categoryItems.map((item) => (
             <Accordion
               key={item._id}
@@ -104,25 +104,28 @@ export default function ProductCategory({
                   }`}
                 />
               }
+              {...({} as any)}
             >
-              <ListItem className="p-0" selected={open === item._id}>
+              <ListItem className="p-0" selected={open === item._id} {...({} as any)}>
                 <AccordionHeader
                   onClick={() => handleCategory(item._id, item.parent)}
                   className="border-b-0 p-3"
+                  {...({} as any)}
                 >
                   <Typography
                     color="blue-gray"
                     className="mr-auto font-normal mb-0"
+                    {...({} as any)}
                   >
                     {item.parent}
                   </Typography>
                 </AccordionHeader>
               </ListItem>
               {item.children.length > 0 && (
-                <AccordionBody className="py-1 ml-4">
-                  <List className="p-0">
+                <AccordionBody className="py-1 ml-4" {...({} as any)}>
+                  <List className="p-0" {...({} as any)}>
                     {item.children.map((sub: string, i: number) => (
-                      <ListItem key={i} onClick={() => handleSubCategory(sub)}>
+                      <ListItem key={i} onClick={() => handleSubCategory(sub)} {...({} as any)}>
                         {sub}
                       </ListItem>
                     ))}
@@ -136,6 +139,10 @@ export default function ProductCategory({
     );
   }
 
+  function RenderCardContent() {
+    return <Card>{content}</Card>;
+  }
+
   return (
     <>
       <div className="tags-input-wrapper mb-2">
@@ -147,8 +154,8 @@ export default function ProductCategory({
         ))}
       </div>
       <div className="h-80 overflow-y-scroll overflow-x-hidden">
-        <Card>{content}</Card>
+        {RenderCardContent() as any}
       </div>
     </>
-  );
+  ) as any;
 }

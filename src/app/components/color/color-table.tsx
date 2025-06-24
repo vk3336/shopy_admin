@@ -2,6 +2,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { IColor } from "@/types/color-type";
 import { useGetAllColorQuery, useDeleteColorMutation } from "@/redux/color/colorApi";
 
@@ -35,7 +36,7 @@ export default function ColorTable() {
             data.data.map((c: IColor) => (
               <tr key={c._id}>
                 <td className="py-2">
-                  {c.img && <img src={c.img} alt={c.name} className="w-12 h-12 object-cover rounded" />}
+                  {c.img && <Image src={c.img} alt={c.name} width={48} height={48} className="object-cover rounded" />}
                 </td>
                 <td className="py-2">{c.name}</td>
                 <td className="py-2">

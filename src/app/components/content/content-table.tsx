@@ -2,6 +2,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { IContent } from "@/types/content-type";
 import { useGetAllContentQuery, useDeleteContentMutation } from "@/redux/content/contentApi";
 
@@ -30,7 +31,7 @@ export default function ContentTable() {
             data.data.map((c: IContent) => (
               <tr key={c._id}>
                 <td className="py-2">
-                  {c.img && <img src={c.img} alt={c.name} className="w-12 h-12 object-cover rounded" />}
+                  {c.img && <Image src={c.img} alt={c.name} width={48} height={48} className="object-cover rounded" />}
                 </td>
                 <td className="py-2">{c.name}</td>
                 <td className="py-2 flex space-x-2">

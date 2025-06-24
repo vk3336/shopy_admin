@@ -7,6 +7,7 @@ import EditTooltip from "../tooltip/edit-tooltip";
 import { useDeleteCategoryMutation } from "@/redux/category/categoryApi";
 import { notifyError } from "@/utils/toast";
 import { useRouter } from "next/navigation";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 // prop type
 type IPropType = {
@@ -33,12 +34,10 @@ const CategoryEditDelete = ({ id }: IPropType) => {
       if (result.isConfirmed) {
         try {
           const res = await deleteCategory(id);
-          if ("error" in res) {
-            if ("data" in res.error) {
-              const errorData = res.error.data as { message?: string };
-              if (typeof errorData.message === "string") {
-                return notifyError(errorData.message);
-              }
+          if ("error" in res && res.error && "data" in res.error) {
+            const error = res.error as FetchBaseQueryError;
+            if (error.data && typeof error.data === "object" && "message" in error.data) {
+              return notifyError(error.data.message as string);
             }
           } else {
             Swal.fire("Deleted!", `Your category has been deleted.`, "success");

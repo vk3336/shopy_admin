@@ -6,6 +6,7 @@ import { notifyError } from "@/utils/toast";
 import { useDeleteProductMutation } from "@/redux/product/productApi";
 import DeleteTooltip from "../tooltip/delete-tooltip";
 import EditTooltip from "../tooltip/edit-tooltip";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 const EditDeleteBtn = ({ id }: { id: string }) => {
   const [showEdit, setShowEdit] = useState<boolean>(false);
@@ -25,12 +26,10 @@ const EditDeleteBtn = ({ id }: { id: string }) => {
       if (result.isConfirmed) {
         try {
           const res = await deleteProduct(productId);
-          if ("error" in res) {
-            if ("data" in res.error) {
-              const errorData = res.error.data as { message?: string };
-              if (typeof errorData.message === "string") {
-                return notifyError(errorData.message);
-              }
+          if ("error" in res && res.error && "data" in res.error) {
+            const error = res.error as FetchBaseQueryError;
+            if (error.data && typeof error.data === "object" && "message" in error.data) {
+              return notifyError(error.data.message as string);
             }
           } else {
             Swal.fire("Deleted!", `Your product has been deleted.`, "success");
